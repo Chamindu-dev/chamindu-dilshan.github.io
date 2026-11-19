@@ -3,132 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H.M.C. Dilshan | Web Developer & Automation Specialist</title>
+    <title>H.M.C. Dilshan | Full-Stack Web Developer & Automation Specialist</title>
     <link href="[suspicious link removed]" rel="stylesheet">
     <style>
         :root {
             --bg: #0b0f19;
             --card: #111827;
+            --card-hover: #1f2937;
             --accent: #06b6d4;
             --blue: #3b82f6;
+            --purple: #8b5cf6;
             --text: #f3f4f6;
             --muted: #9ca3af;
-            --border: #1f2937;
+            --border: rgba(255, 255, 255, 0.08);
+            --glow: rgba(6, 182, 212, 0.15);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-        header { position: fixed; top: 0; width: 100%; background: rgba(11,15,25,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); z-index: 100; }
+        
+        /* Header & Nav */
+        header { position: fixed; top: 0; width: 100%; background: rgba(11, 15, 25, 0.85); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); z-index: 1000; }
         nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
         .logo span { color: var(--accent); }
-        .btn { background: linear-gradient(135deg, var(--accent), var(--blue)); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; }
-        .hero { padding: 150px 0 80px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
-        .badge { display: inline-block; padding: 4px 12px; background: rgba(6,182,212,0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-size: 0.85rem; margin-bottom: 16px; }
-        .title { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
-        .terminal { background: #0d1117; border: 1px solid var(--border); border-radius: 12px; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.88rem; }
-        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent); }
+        
+        .btn { background: linear-gradient(135deg, var(--accent), var(--blue)); color: #fff; padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; border: none; cursor: pointer; box-shadow: 0 4px 15px var(--glow); }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3); }
+        
+        /* Hero Section */
+        .hero { padding: 160px 0 90px; }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(6, 182, 212, 0.1); border: 1px solid var(--accent); border-radius: 30px; color: var(--accent); font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; }
+        .pulse-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+        }
+        
+        .title { font-size: 3rem; font-weight: 800; line-height: 1.15; margin-bottom: 16px; letter-spacing: -1px; }
+        .gradient-text { background: linear-gradient(135deg, var(--accent), var(--blue), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { color: var(--muted); font-size: 1.05rem; margin-bottom: 28px; }
+        
+        /* Terminal Card */
+        .terminal { background: #0d1117; border: 1px solid var(--border); border-radius: 14px; padding: 24px; font-family: 'Fira Code', monospace; font-size: 0.88rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); transition: transform 0.3s ease; }
+        .terminal:hover { transform: translateY(-4px); }
+        .terminal-header { display: flex; gap: 8px; margin-bottom: 16px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; } .yellow { background: #ffbd2e; } .green { background: #27c93f; }
+        
+        /* Sections */
+        section { padding: 90px 0; border-top: 1px solid var(--border); }
+        .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+        .section-subtitle { color: var(--muted); margin-bottom: 40px; font-size: 0.95rem; }
+        
+        /* Cards & Grid */
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
-        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; color: var(--accent); display: inline-block; margin: 4px; }
-        footer { padding: 30px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.85rem; }
-        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .card:hover { background: var(--card-hover); border-color: rgba(6, 182, 212, 0.4); transform: translateY(-50px scale(1.01)); transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); }
+        .card-icon { font-size: 2rem; margin-bottom: 16px; display: inline-block; }
+        .card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
+        .card p { color: var(--muted); font-size: 0.92rem; }
+        
+        /* Tech Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+        .tag { background: rgba(6, 182, 212, 0.08); border: 1px solid rgba(6, 182, 212, 0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: var(--accent); }
+        
+        /* Timeline */
+        .timeline-card { border-left: 3px solid var(--accent); }
+        
+        /* Footer */
+        footer { padding: 40px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.88rem; }
+        
+        @media (max-width: 868px) {
+            .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .title { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Header Navigation -->
     <header>
         <div class="container">
             <nav>
                 <a href="#" class="logo">H.M.C. <span>Dilshan</span></a>
-                <a href="mailto:chamindudil2000@gmail.com" class="btn">Get In Touch</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+                <a href="mailto:chamindudil2000@gmail.com" class="btn">Contact Me</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container" style="grid-column: 1/-1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;">
-            <div>
-                <span class="badge">🚀 Open for Web & Automation Roles</span>
-                <h1 class="title">Hi, I'm Dilshan.<br><span style="color:var(--accent);">Web Developer</span> & Automation Specialist</h1>
-                <p style="color:var(--muted); margin-bottom: 24px;">BHSc (Hons) Candidate in Health ICT at Gampaha Wickramarachchi University. Specialized in WordPress customization, custom CSS engineering, PHP, Python, and API automation pipelines.</p>
-                <a href="https://linkedin.com/in/chamindu-dilshan-tech" target="_blank" class="btn">LinkedIn Profile</a>
-            </div>
-            <div class="terminal">
-                <p style="color:#79c0ff;">// Developer Info</p>
-                <p>const dev = {</p>
-                <p style="padding-left:15px;">name: <span style="color:#7ee787;">'H.M.C. Dilshan'</span>,</p>
-                <p style="padding-left:15px;">role: <span style="color:#7ee787;">'Web Developer & Automation Specialist'</span>,</p>
-                <p style="padding-left:15px;">experience: <span style="color:#7ee787;">'CEYCERT (Pvt) Ltd'</span>,</p>
-                <p style="padding-left:15px;">stack: [<span style="color:#7ee787;">'WordPress'</span>, <span style="color:#7ee787;">'Custom CSS'</span>, <span style="color:#7ee787;">'PHP'</span>, <span style="color:#7ee787;">'Python'</span>]</p>
-                <p>};</p>
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="badge">
+                        <span class="pulse-dot"></span> Open for Full-Stack & Automation Opportunities
+                    </div>
+                    <h1 class="title">Hi, I'm <span class="gradient-text">H.M.C. Dilshan</span>.<br>Web Developer & Systems Specialist</h1>
+                    <p>BHSc (Hons) Candidate in Health ICT at Gampaha Wickramarachchi University. Specialized in Full-Stack Web Engineering, WordPress Customization, REST APIs, PHP, MySQL, and Python Automation.</p>
+                    <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://linkedin.com/in/chamindu-dilshan-tech" target="_blank" class="btn">LinkedIn Profile</a>
+                        <a href="https://github.com/Chamindu-dev" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border);">GitHub Repository</a>
+                    </div>
+                </div>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                    <p style="color:#79c0ff;">// Developer Profile Terminal</p>
+                    <p><span style="color:#ff7b72;">const</span> <span style="color:#d2a8ff;">engineer</span> = {</p>
+                    <p style="padding-left:16px;">name: <span style="color:#a5d6ff;">'H.M.C. Dilshan'</span>,</p>
+                    <p style="padding-left:16px;">degree: <span style="color:#a5d6ff;">'BHSc (Hons) in HICT'</span>,</p>
+                    <p style="padding-left:16px;">university: <span style="color:#a5d6ff;">'GWUIM, Sri Lanka'</span>,</p>
+                    <p style="padding-left:16px;">internship: <span style="color:#a5d6ff;">'CEYCERT (Pvt) Ltd'</span>,</p>
+                    <p style="padding-left:16px;">primaryStack: [<span style="color:#a5d6ff;">'PHP'</span>, <span style="color:#a5d6ff;">'MySQL'</span>, <span style="color:#a5d6ff;">'WordPress'</span>, <span style="color:#a5d6ff;">'Python'</span>]</p>
+                    <p>};</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section>
+    <!-- Experience Section -->
+    <section id="experience">
         <div class="container">
-            <h2 style="margin-bottom: 24px;">Core Capabilities</h2>
+            <h2 class="section-title">Professional Experience</h2>
+            <p class="section-subtitle">Demonstrated track record in enterprise web modernization and workflow automation.</p>
+            
+            <div class="card timeline-card">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <h3>Web Developer & Web Automation Intern</h3>
+                        <p style="color:var(--accent); font-weight:600;">CEYCERT (Pvt) Ltd • Accredited Certification Body</p>
+                    </div>
+                    <span class="tag" style="font-size: 0.85rem;">2024</span>
+                </div>
+                <p style="margin-top: 14px;">Single-handedly redesigned and modernized the corporate web platform (ceycert.com), standardizing digital layouts across 500+ client certification pages. Engineered automated WhatsApp form routing via Google Apps Script and Green API webhooks, resolved layout CLS errors, hardened portal security (SSL & path masking), and created custom CSS widgets.</p>
+                <div class="tags">
+                    <span class="tag">WordPress Engineering</span>
+                    <span class="tag">Custom CSS3</span>
+                    <span class="tag">Google Apps Script</span>
+                    <span class="tag">Green API</span>
+                    <span class="tag">LiteSpeed Caching</span>
+                    <span class="tag">SSL Security</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-subtitle">Key software development, automation, and AI projects led and executed.</p>
+            
+            <div class="grid-3">
+                <!-- Project 1: CEYCERT -->
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>CEYCERT Infrastructure Overhaul</h3>
+                    <p>Standardized 500+ client certification pages, built dynamic QR validation loops, created mobile-responsive custom CSS layouts, and implemented automated WhatsApp form webhooks.</p>
+                    <div class="tags">
+                        <span class="tag">WordPress</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">REST APIs</span>
+                        <span class="tag">Google Apps Script</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: Online Library Management System -->
+                <div class="card">
+                    <div class="card-icon">📚</div>
+                    <h3>Online Library Management System</h3>
+                    <p>Full-stack web application designed for physical and digital catalogue management. Features relational MySQL schema, secure user authentication, real-time search, and automated overdue alerts.</p>
+                    <div class="tags">
+                        <span class="tag">HTML5/CSS3</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: AI Early Dementia Detection -->
+                <div class="card">
+                    <div class="card-icon">🧠</div>
+                    <h3>AI Dementia Detection System</h3>
+                    <p>Web-based AI tool utilizing Convolutional Neural Networks (CNN) to classify dementia stages from brain MRI scans. Handled data preprocessing and deployed model via Streamlit Cloud.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">CNN</span>
+                        <span class="tag">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Capabilities</h2>
+            <p class="section-subtitle">Full spectrum of development languages, frameworks, and tools.</p>
+            
             <div class="grid-3">
                 <div class="card">
-                    <h3>💻 Web Development</h3>
-                    <p style="color:var(--muted); margin-top:8px;">Modernized ceycert.com across 500+ certification pages with responsive Custom CSS, logo CLS fixes, and LiteSpeed performance optimization.</p>
+                    <h3>💻 Full-Stack Development</h3>
+                    <p style="margin-top:8px;">HTML5, Custom CSS3 (Media Queries), JavaScript, PHP, C#, ASP.NET, Streamlit, Relational MySQL Database Architecture.</p>
                 </div>
                 <div class="card">
                     <h3>⚡ Workflow Automation</h3>
-                    <p style="color:var(--muted); margin-top:8px;">Engineered automated notification webhooks using Google Apps Script & Green API REST calls to route web form submissions to WhatsApp.</p>
+                    <p style="margin-top:8px;">Google Apps Script, REST APIs, Green API Integration, Webhook Event Handling, JSON Payload Parsing.</p>
                 </div>
                 <div class="card">
-                    <h3>🔒 Security & Digital Verification</h3>
-                    <p style="color:var(--muted); margin-top:8px;">Enforced SSL security, hid admin paths, masked confidential PDF search indexing, and implemented dynamic QR certificate verification.</p>
+                    <h3>🔒 Security & Speed</h3>
+                    <p style="margin-top:8px;">SSL Migration, Login Path Masking, LiteSpeed Caching, Smush Image Compression, CLS Optimization, Updraft Backups.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
-        <div class="container">
-            <h2 style="margin-bottom: 24px;">Work Experience</h2>
-            <div class="card">
-                <h3>Web Developer & Web Automation Intern</h3>
-                <p style="color:var(--accent); font-weight:600;">CEYCERT (Pvt) Ltd • 2026</p>
-                <p style="color:var(--muted); margin-top:10px;">Managed single-handed corporate website overhaul, custom CSS layout architecture, speed tuning, SSL enforcement, and automated WhatsApp notification pipelines.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <div class="container">
-            <h2 style="margin-bottom: 24px;">Featured Projects</h2>
-            <div class="grid-2">
-                <div class="card">
-                    <h3>CEYCERT Enterprise Digital Infrastructure</h3>
-                    <p style="color:var(--muted); margin-top:8px;">Overhauled 500+ client certification pages, custom CSS scrollable widgets, LiteSpeed cache tuning, and WhatsApp API integration.</p>
-                    <div style="margin-top:12px;">
-                        <span class="tag">WordPress</span><span class="tag">Custom CSS</span><span class="tag">Google Apps Script</span><span class="tag">Green API</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <h3>AI-Driven Early Dementia Detection System</h3>
-                    <p style="color:var(--muted); margin-top:8px;">Undergraduate research project utilizing Deep Learning neural networks for diagnostic healthcare imaging assessment.</p>
-                    <div style="margin-top:12px;">
-                        <span class="tag">Python</span><span class="tag">Deep Learning</span><span class="tag">Neural Networks</span><span class="tag">Health ICT</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section style="text-align: center;">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <p style="color:var(--muted); margin: 12px 0 24px;">Phone: 077 631 9567 | Email: chamindudil2000@gmail.com</p>
-            <a href="mailto:chamindudil2000@gmail.com" class="btn">Send Email</a>
-        </div>
-    </section>
-
+    <!-- Footer -->
     <footer>
-        <p>© 2026 H.M.C. Dilshan. Built with Precision & Performance.</p>
+        <div class="container">
+            <p>© 2026 H.M.C. Dilshan • Built with Precision & Performance</p>
+        </div>
     </footer>
+
 </body>
 </html>
