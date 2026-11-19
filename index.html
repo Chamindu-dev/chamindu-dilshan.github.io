@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.M.C. Dilshan | Web Developer & Automation Specialist</title>
+    <link href="[suspicious link removed]" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --card: #111827;
+            --accent: #06b6d4;
+            --blue: #3b82f6;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --border: #1f2937;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        header { position: fixed; top: 0; width: 100%; background: rgba(11,15,25,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); z-index: 100; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--text); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .btn { background: linear-gradient(135deg, var(--accent), var(--blue)); color: #fff; padding: 10px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; }
+        .hero { padding: 150px 0 80px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; }
+        .badge { display: inline-block; padding: 4px 12px; background: rgba(6,182,212,0.1); border: 1px solid var(--accent); border-radius: 20px; color: var(--accent); font-size: 0.85rem; margin-bottom: 16px; }
+        .title { font-size: 2.8rem; font-weight: 800; line-height: 1.2; margin-bottom: 12px; }
+        .terminal { background: #0d1117; border: 1px solid var(--border); border-radius: 12px; padding: 20px; font-family: 'Fira Code', monospace; font-size: 0.88rem; }
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+        .tag { background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 4px 12px; border-radius: 15px; font-size: 0.8rem; color: var(--accent); display: inline-block; margin: 4px; }
+        footer { padding: 30px 0; text-align: center; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.85rem; }
+        @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">H.M.C. <span>Dilshan</span></a>
+                <a href="mailto:chamindudil2000@gmail.com" class="btn">Get In Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" style="grid-column: 1/-1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center;">
+            <div>
+                <span class="badge">🚀 Open for Web & Automation Roles</span>
+                <h1 class="title">Hi, I'm Dilshan.<br><span style="color:var(--accent);">Web Developer</span> & Automation Specialist</h1>
+                <p style="color:var(--muted); margin-bottom: 24px;">BHSc (Hons) Candidate in Health ICT at Gampaha Wickramarachchi University. Specialized in WordPress customization, custom CSS engineering, PHP, Python, and API automation pipelines.</p>
+                <a href="https://linkedin.com/in/chamindu-dilshan-tech" target="_blank" class="btn">LinkedIn Profile</a>
+            </div>
+            <div class="terminal">
+                <p style="color:#79c0ff;">// Developer Info</p>
+                <p>const dev = {</p>
+                <p style="padding-left:15px;">name: <span style="color:#7ee787;">'H.M.C. Dilshan'</span>,</p>
+                <p style="padding-left:15px;">role: <span style="color:#7ee787;">'Web Developer & Automation Specialist'</span>,</p>
+                <p style="padding-left:15px;">experience: <span style="color:#7ee787;">'CEYCERT (Pvt) Ltd'</span>,</p>
+                <p style="padding-left:15px;">stack: [<span style="color:#7ee787;">'WordPress'</span>, <span style="color:#7ee787;">'Custom CSS'</span>, <span style="color:#7ee787;">'PHP'</span>, <span style="color:#7ee787;">'Python'</span>]</p>
+                <p>};</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 style="margin-bottom: 24px;">Core Capabilities</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>💻 Web Development</h3>
+                    <p style="color:var(--muted); margin-top:8px;">Modernized ceycert.com across 500+ certification pages with responsive Custom CSS, logo CLS fixes, and LiteSpeed performance optimization.</p>
+                </div>
+                <div class="card">
+                    <h3>⚡ Workflow Automation</h3>
+                    <p style="color:var(--muted); margin-top:8px;">Engineered automated notification webhooks using Google Apps Script & Green API REST calls to route web form submissions to WhatsApp.</p>
+                </div>
+                <div class="card">
+                    <h3>🔒 Security & Digital Verification</h3>
+                    <p style="color:var(--muted); margin-top:8px;">Enforced SSL security, hid admin paths, masked confidential PDF search indexing, and implemented dynamic QR certificate verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 style="margin-bottom: 24px;">Work Experience</h2>
+            <div class="card">
+                <h3>Web Developer & Web Automation Intern</h3>
+                <p style="color:var(--accent); font-weight:600;">CEYCERT (Pvt) Ltd • 2024</p>
+                <p style="color:var(--muted); margin-top:10px;">Managed single-handed corporate website overhaul, custom CSS layout architecture, speed tuning, SSL enforcement, and automated WhatsApp notification pipelines.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 style="margin-bottom: 24px;">Featured Projects</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>CEYCERT Enterprise Digital Infrastructure</h3>
+                    <p style="color:var(--muted); margin-top:8px;">Overhauled 500+ client certification pages, custom CSS scrollable widgets, LiteSpeed cache tuning, and WhatsApp API integration.</p>
+                    <div style="margin-top:12px;">
+                        <span class="tag">WordPress</span><span class="tag">Custom CSS</span><span class="tag">Google Apps Script</span><span class="tag">Green API</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>AI-Driven Early Dementia Detection System</h3>
+                    <p style="color:var(--muted); margin-top:8px;">Undergraduate research project utilizing Deep Learning neural networks for diagnostic healthcare imaging assessment.</p>
+                    <div style="margin-top:12px;">
+                        <span class="tag">Python</span><span class="tag">Deep Learning</span><span class="tag">Neural Networks</span><span class="tag">Health ICT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="text-align: center;">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="color:var(--muted); margin: 12px 0 24px;">Phone: 077 631 9567 | Email: chamindudil2000@gmail.com</p>
+            <a href="mailto:chamindudil2000@gmail.com" class="btn">Send Email</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 H.M.C. Dilshan. Built with Precision & Performance.</p>
+    </footer>
+</body>
+</html>
