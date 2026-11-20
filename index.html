@@ -3,85 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H.M.C. Dilshan | Web Developer & Systems Specialist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>H.M.C. Dilshan | Web Engineer & Automation Specialist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text-main: #0f172a;
-            --text-sub: #475569;
-            --text-muted: #64748b;
-            --primary: #2563eb;
-            --primary-soft: #eff6ff;
-            --accent: #0d9488;
-            --accent-soft: #ccfbf1;
-            --border: #e2e8f0;
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
-            --shadow-lg: 0 20px 35px -10px rgba(37, 99, 235, 0.12);
+            --bg: #090d16;
+            --card-bg: #111827;
+            --card-border: #1f293d;
+            --card-hover-border: #3b82f6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --accent-emerald: #10b981;
+            --glow-blue: rgba(59, 130, 246, 0.15);
+            --glow-cyan: rgba(6, 182, 212, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.6; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
 
-        .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+        /* Container */
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+        /* Background Glow Orbs */
+        .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.25; pointer-events: none; z-index: 0; }
+        .orb-1 { top: 5%; left: 10%; width: 350px; height: 350px; background: var(--accent-blue); }
+        .orb-2 { top: 40%; right: 5%; width: 400px; height: 400px; background: var(--accent-purple); }
 
         /* Navigation */
-        header { position: fixed; top: 0; width: 100%; background: rgba(255, 255, 255, 0.85); border-bottom: 1px solid var(--border); backdrop-filter: blur(12px); z-index: 1000; }
-        nav { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-        .logo { font-weight: 800; font-size: 1.2rem; color: var(--text-main); text-decoration: none; letter-spacing: -0.5px; }
-        .logo span { color: var(--primary); }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
-        .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.2s ease; }
-        .nav-links a:hover { color: var(--primary); }
+        header { position: fixed; top: 0; width: 100%; background: rgba(9, 13, 22, 0.85); border-bottom: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(16px); z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 74px; }
+        .logo { font-weight: 800; font-size: 1.25rem; color: var(--text-primary); text-decoration: none; letter-spacing: -0.5px; }
+        .logo span { color: var(--accent-cyan); }
+        .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.92rem; font-weight: 600; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent-cyan); }
 
-        .btn { background: var(--primary); color: #ffffff; padding: 10px 22px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
-        .btn:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
+        .btn-primary { background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan)); color: #fff; padding: 11px 24px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: none; cursor: pointer; box-shadow: 0 4px 20px var(--glow-blue); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4); }
 
         /* Hero Section */
-        .hero { padding: 150px 0 80px; }
-        .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-        .status-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: var(--accent-soft); border: 1px solid rgba(13, 148, 136, 0.3); border-radius: 30px; color: var(--accent); font-size: 0.85rem; font-weight: 700; margin-bottom: 24px; }
-        .status-dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+        .hero { padding: 160px 0 100px; position: relative; }
+        .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center; }
+        
+        .badge { display: inline-flex; align-items: center; gap: 10px; padding: 6px 16px; background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); border-radius: 30px; color: var(--accent-emerald); font-size: 0.85rem; font-weight: 700; margin-bottom: 24px; }
+        .pulse-dot { width: 8px; height: 8px; background: var(--accent-emerald); border-radius: 50%; box-shadow: 0 0 10px var(--accent-emerald); animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { transform: scale(0.95); opacity: 1; } 70% { transform: scale(1.3); opacity: 0; } 100% { transform: scale(0.95); opacity: 0; } }
 
-        .hero h1 { font-size: 3.1rem; font-weight: 800; line-height: 1.18; letter-spacing: -1.2px; margin-bottom: 20px; color: var(--text-main); }
-        .hero h1 span { color: var(--primary); }
-        .hero p { color: var(--text-sub); font-size: 1.08rem; line-height: 1.7; margin-bottom: 32px; }
+        .hero h1 { font-size: 3.2rem; font-weight: 800; line-height: 1.15; letter-spacing: -1.2px; margin-bottom: 20px; }
+        .typing-text { color: var(--accent-cyan); border-right: 3px solid var(--accent-cyan); animation: blink 0.8s infinite; white-space: nowrap; }
+        @keyframes blink { 0%, 100% { border-color: transparent; } 50% { border-color: var(--accent-cyan); } }
 
-        /* Bespoke Stat Card */
-        .stats-card { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 32px; box-shadow: var(--shadow-md); transition: transform 0.3s ease; }
-        .stats-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-        .stat-item { padding: 16px 0; border-bottom: 1px solid var(--border); }
-        .stat-item:last-child { border-bottom: none; }
-        .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-        .stat-label { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); }
+        .hero p { color: var(--text-secondary); font-size: 1.08rem; line-height: 1.7; margin-bottom: 32px; }
+
+        /* Developer Vector Illustration Box */
+        .dev-illustration-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 24px; padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); transition: all 0.4s ease; }
+        .dev-illustration-card:hover { border-color: var(--accent-blue); transform: translateY(-6px); }
+        .dev-svg { width: 100%; max-width: 280px; height: auto; }
+
+        /* Floating Skill Badges on Illustration */
+        .floating-tag { position: absolute; background: rgba(17, 24, 39, 0.95); border: 1px solid var(--card-border); padding: 8px 16px; border-radius: 12px; font-size: 0.82rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.4); animation: float 4s ease-in-out infinite; }
+        .ft-1 { top: 20px; left: -10px; animation-delay: 0s; }
+        .ft-2 { bottom: 30px; right: -10px; animation-delay: 2s; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
         /* Sections */
-        section { padding: 80px 0; border-top: 1px solid var(--border); }
-        .section-header { margin-bottom: 48px; }
-        .section-title { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.8px; color: var(--text-main); }
-        .section-subtitle { color: var(--text-muted); font-size: 1rem; margin-top: 6px; }
+        section { padding: 90px 0; border-top: 1px solid var(--card-border); position: relative; }
+        .section-header { text-align: center; max-width: 650px; margin: 0 auto 50px; }
+        .section-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.8px; margin-bottom: 12px; }
+        .section-subtitle { color: var(--text-secondary); font-size: 1rem; }
 
-        /* Grid & Cards */
-        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+        /* Filter Tabs */
+        .filter-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 40px; flex-wrap: wrap; }
+        .tab-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-secondary); padding: 9px 20px; border-radius: 30px; font-weight: 600; font-size: 0.88rem; cursor: pointer; transition: all 0.3s ease; }
+        .tab-btn.active, .tab-btn:hover { background: var(--accent-blue); color: #fff; border-color: var(--accent-blue); box-shadow: 0 4px 15px var(--glow-blue); }
+
+        /* Grid & High Contrast Cards */
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+        
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 32px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .card:hover { border-color: var(--accent-cyan); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(6, 182, 212, 0.15); }
+        
+        .card-icon-wrapper { width: 54px; height: 54px; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; color: var(--accent-cyan); }
+        .card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 12px; color: var(--text-primary); }
+        .card p { color: var(--text-secondary); font-size: 0.94rem; line-height: 1.65; margin-bottom: 20px; }
 
-        .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 32px; box-shadow: var(--shadow-sm); transition: all 0.3s ease; }
-        .card:hover { border-color: rgba(37, 99, 235, 0.3); transform: translateY(-4px); box-shadow: var(--shadow-md); }
-        .card-icon { width: 48px; height: 48px; background: var(--primary-soft); color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; font-weight: 700; }
-        .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
-        .card p { color: var(--text-sub); font-size: 0.94rem; line-height: 1.6; }
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+        .tag { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: var(--accent-cyan); }
 
-        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-        .tag { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; color: var(--text-sub); }
+        /* Scroll Reveal Effect */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Footer */
-        footer { padding: 40px 0; text-align: center; color: var(--text-muted); border-top: 1px solid var(--border); font-size: 0.9rem; }
+        footer { padding: 45px 0; text-align: center; color: var(--text-secondary); border-top: 1px solid var(--card-border); font-size: 0.9rem; }
 
-        @media (max-width: 868px) {
-            .hero-grid, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .hero-grid, .grid-3 { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.3rem; }
             .nav-links { display: none; }
         }
@@ -89,7 +110,10 @@
 </head>
 <body>
 
-    <!-- Header -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <!-- Header Navigation -->
     <header>
         <div class="container">
             <nav>
@@ -100,7 +124,7 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                 </ul>
-                <a href="mailto:chamindudil2000@gmail.com" class="btn">Get In Touch</a>
+                <a href="mailto:chamindudil2000@gmail.com" class="btn-primary">Get In Touch</a>
             </nav>
         </div>
     </header>
@@ -109,78 +133,89 @@
     <section class="hero" id="about">
         <div class="container">
             <div class="hero-grid">
-                <div>
-                    <div class="status-badge">
-                        <span class="status-dot"></span> Available for Web & Systems Roles
+                <div class="reveal active">
+                    <div class="badge">
+                        <span class="pulse-dot"></span> Available for Web Engineering Roles
                     </div>
-                    <h1>Full-Stack Web Engineering & <span>Automation Specialist</span></h1>
-                    <p>BHSc (Hons) Candidate in Health ICT at Gampaha Wickramarachchi University. Engineering modern digital solutions, enterprise WordPress overhauls, REST APIs, PHP, and Python automation systems.</p>
+                    <h1>Hi, I'm Dilshan.<br><span class="typing-text" id="typewriter"></span></h1>
+                    <p>BHSc (Hons) Candidate in Health ICT at Gampaha Wickramarachchi University of Indigenous Medicine. Specialized in Full-Stack Web Development, WordPress Infrastructure Overhauls, REST APIs, PHP, and Python Automation.</p>
                     <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                        <a href="https://linkedin.com/in/chamindu-dilshan-tech" target="_blank" class="btn">LinkedIn Profile</a>
-                        <a href="mailto:chamindudil2000@gmail.com" class="btn" style="background: transparent; color: var(--text-main); border: 1px solid var(--border); box-shadow: none;">Direct Email</a>
+                        <a href="https://linkedin.com/in/chamindu-dilshan-tech" target="_blank" class="btn-primary">LinkedIn Profile</a>
+                        <a href="mailto:chamindudil2000@gmail.com" class="btn-primary" style="background: transparent; border: 1px solid var(--card-border); box-shadow: none;">Direct Email</a>
                     </div>
                 </div>
 
-                <div class="stats-card">
-                    <div class="stat-item">
-                        <div class="stat-number">500+</div>
-                        <div class="stat-label">Certification Pages Overhauled & Standardized</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Automated WhatsApp Webhook Routing</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">3 Core</div>
-                        <div class="stat-label">Full-Stack & Deep Learning Projects Executed</div>
-                    </div>
+                <!-- Custom Vector Illustration Card -->
+                <div class="dev-illustration-card reveal active">
+                    <div class="floating-tag ft-1">⚡ WhatsApp Webhooks</div>
+                    <div class="floating-tag ft-2">🔒 SSL & CLS Hardened</div>
+                    
+                    <!-- SVG Vector Avatar Illustration -->
+                    <svg class="dev-svg" viewBox="0 0 300 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="150" cy="130" r="100" fill="#1e293b" opacity="0.5"/>
+                        <path d="M90 210 C90 170 110 150 150 150 C190 150 210 170 210 210" stroke="#06b6d4" stroke-width="8" stroke-linecap="round"/>
+                        <circle cx="150" cy="115" r="35" fill="#3b82f6"/>
+                        <path d="M125 110 Q150 85 175 110" stroke="#f8fafc" stroke-width="5" stroke-linecap="round"/>
+                        <rect x="70" y="180" width="160" height="60" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="4"/>
+                        <path d="M90 205 L110 205 M90 220 L140 220" stroke="#06b6d4" stroke-width="4" stroke-linecap="round"/>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience -->
+    <!-- Work Experience -->
     <section id="experience">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Work Experience</h2>
-                <p class="section-subtitle">Practical industry contributions and enterprise Web Development.</p>
+                <p class="section-subtitle">Proven track record in corporate web infrastructure and automation.</p>
             </div>
             
-            <div class="card" style="border-left: 4px solid var(--primary);">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div class="card reveal" style="border-left: 4px solid var(--accent-cyan);">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
                     <div>
-                        <h3>Web Developer & Web Automation Intern</h3>
-                        <p style="color:var(--primary); font-weight:600; margin-top: 2px;">CEYCERT (Pvt) Ltd • Accredited Certification Body</p>
+                        <h3>Web Developer & Systems Automation Intern</h3>
+                        <p style="color:var(--accent-cyan); font-weight:700;">CEYCERT (Pvt) Ltd • Accredited Certification Body</p>
                     </div>
-                    <span class="tag" style="background: var(--primary-soft); color: var(--primary); border: none; font-size: 0.85rem;">2024</span>
+                    <span class="tag" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">2024 Internship</span>
                 </div>
-                <p style="margin-top: 16px;">Independently led the corporate website overhaul (ceycert.com). Standardized layout structures across 500+ client certification pages, engineered automated WhatsApp notification webhooks using Google Apps Script and Green API, eliminated layout CLS issues, enforced HTTPS/SSL security, and customized responsive UI elements.</p>
+                <p>Independently led the complete overhaul of ceycert.com. Standardized layout templates across 500+ client certification pages, engineered automated WhatsApp notification webhooks using Google Apps Script and Green API, eliminated layout CLS issues, enforced HTTPS/SSL security, and developed responsive custom CSS widgets.</p>
                 <div class="tags">
-                    <span class="tag">WordPress Engineering</span>
+                    <span class="tag">WordPress Overhaul</span>
                     <span class="tag">Custom CSS3</span>
                     <span class="tag">Google Apps Script</span>
-                    <span class="tag">Green API Integration</span>
-                    <span class="tag">LiteSpeed Speed Optimization</span>
+                    <span class="tag">Green API REST</span>
+                    <span class="tag">LiteSpeed Speed Tuning</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Featured Projects -->
     <section id="projects">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header reveal">
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">Selected web applications, databases, and AI systems built.</p>
+                <p class="section-subtitle">Filter through software engineering, automation, and AI systems built.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs reveal">
+                <button class="tab-btn active" onclick="filterProjects('all')">All Projects</button>
+                <button class="tab-btn" onclick="filterProjects('web')">Web Engineering</button>
+                <button class="tab-btn" onclick="filterProjects('auto')">Automation & APIs</button>
+                <button class="tab-btn" onclick="filterProjects('ai')">AI & Healthcare</button>
             </div>
 
             <div class="grid-3">
                 <!-- CEYCERT -->
-                <div class="card">
-                    <div class="card-icon">🌐</div>
-                    <h3>CEYCERT Web Infrastructure</h3>
-                    <p>Standardized 500+ client certification pages, dynamic QR validation loops, responsive custom CSS, and WhatsApp automation webhooks.</p>
+                <div class="card reveal project-card web auto">
+                    <div>
+                        <div class="card-icon-wrapper">🌐</div>
+                        <h3>CEYCERT Web Infrastructure</h3>
+                        <p>Standardized 500+ certification pages, built dynamic QR validation loops, created mobile-responsive CSS layouts, and WhatsApp notification webhooks.</p>
+                    </div>
                     <div class="tags">
                         <span class="tag">WordPress</span>
                         <span class="tag">PHP</span>
@@ -189,10 +224,12 @@
                 </div>
 
                 <!-- Library System -->
-                <div class="card">
-                    <div class="card-icon">📚</div>
-                    <h3>Online Library Management System</h3>
-                    <p>Full-stack web application with relational MySQL database, user auth, real-time catalogue search, and automated fine calculation loops.</p>
+                <div class="card reveal project-card web">
+                    <div>
+                        <div class="card-icon-wrapper">📚</div>
+                        <h3>Online Library Management</h3>
+                        <p>Full-stack web application with relational MySQL database, secure user authentication, real-time catalogue search, and automated fine loops.</p>
+                    </div>
                     <div class="tags">
                         <span class="tag">PHP</span>
                         <span class="tag">MySQL</span>
@@ -201,45 +238,53 @@
                 </div>
 
                 <!-- AI Dementia -->
-                <div class="card">
-                    <div class="card-icon">🧠</div>
-                    <h3>AI Early Dementia Detection System</h3>
-                    <p>Deep Learning diagnostic tool assessing brain MRI scans using Convolutional Neural Networks (CNN) for early stage classification.</p>
+                <div class="card reveal project-card ai">
+                    <div>
+                        <div class="card-icon-wrapper">🧠</div>
+                        <h3>AI Early Dementia Detection</h3>
+                        <p>Deep Learning medical diagnostic tool classifying dementia stages from brain MRI scans using Convolutional Neural Networks (CNN).</p>
+                    </div>
                     <div class="tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Deep Learning</span>
                         <span class="tag">TensorFlow</span>
+                        <span class="tag">Deep Learning</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Skills Section -->
     <section id="skills">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Technical Capabilities</h2>
-                <p class="section-subtitle">Languages, tools, and platforms utilized across projects.</p>
+            <div class="section-header reveal">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Full spectrum of technologies used across production projects.</p>
             </div>
 
             <div class="grid-3">
-                <div class="card">
-                    <div class="card-icon">💻</div>
-                    <h3>Full-Stack Web Dev</h3>
-                    <p>HTML5, Custom CSS3 (Media Queries), JavaScript, PHP, MySQL Database Architecture, C#, Streamlit.</p>
+                <div class="card reveal">
+                    <div>
+                        <div class="card-icon-wrapper">💻</div>
+                        <h3>Full-Stack Engineering</h3>
+                        <p>HTML5, Custom CSS3, JavaScript, PHP, MySQL Relational Database Architecture, C#, ASP.NET, Streamlit.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Systems Automation</h3>
-                    <p>Google Apps Script, REST APIs, Green API Webhooks, Data Parsing, Mail Routing Logic.</p>
+                <div class="card reveal">
+                    <div>
+                        <div class="card-icon-wrapper">⚡</div>
+                        <h3>Workflow Automation</h3>
+                        <p>Google Apps Script, REST APIs, Green API Webhooks, Dynamic JSON Payload Parsing, Automated Notifications.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Security & Optimization</h3>
-                    <p>SSL Enforcement, Login Path Protection, LiteSpeed Caching, CLS Fixes, Media Compression.</p>
+                <div class="card reveal">
+                    <div>
+                        <div class="card-icon-wrapper">🔒</div>
+                        <h3>Security & Performance</h3>
+                        <p>SSL Enforcement, Login Path Protection, LiteSpeed Caching, CLS Layout Fixes, Media Asset Optimization.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -248,9 +293,76 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2026 H.M.C. Dilshan. Engineered with Precision & Performance.</p>
+            <p>© 2026 H.M.C. Dilshan • Engineered with High Performance & Precision</p>
         </div>
     </footer>
 
+    <!-- Interactive JavaScript -->
+    <script>
+        // Interactive Typewriter Effect
+        const words = ["Web Developer", "Automation Specialist", "Health ICT Specialist"];
+        let i = 0, timer;
+
+        function typingEffect() {
+            let word = words[i].split("");
+            var loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typewriter').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000);
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100);
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            let word = words[i].split("");
+            var loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typewriter').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) { i++; } else { i = 0; }
+                    setTimeout(typingEffect, 500);
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50);
+            };
+            loopDeleting();
+        }
+        typingEffect();
+
+        // Project Filter Tabs
+        function filterProjects(category) {
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+    </script>
 </body>
 </html>
